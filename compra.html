@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"rel="stylesheet"/>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="spinner.css">
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript"> emailjs.init('tn7xkRyisxfPS8qK7')</script>
+    
+    <title>Discos Luchi <3 - Comprar </title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-light min-vw-100">
+            <h2 class="p-3 text-white">Discos Luchi <3 </h2>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-white" data-bs-toggle="modal" data-bs-target="#modal">
+                        <i class="bi bi-cart mx-5" id="carritoContenedor">0</i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <button class="btn mt-2" id="activarFuncion" onclick="procesarPedido()"></button>
+
+    <main>
+        <div class="container-fluid">
+            <div class="row mt-3">
+                <div class="col">
+                    <h2 class="d-flex justify-content-center mb-3">Realizar compra</h2>
+                    <form class="form-carrito" id="pagoProcesar" method="POST">
+                        <div class="form-group row m-4 p-3">
+                            <label for="cliente" class="col-12 col-md-2 col-form-label h2">Cliente: </label>
+                            <div class="col-12 col-md-10">
+                                <input type="text" class="form-control" id="cliente" 
+                                placeholder="Ingresar nombre del cliente" name="cliente">
+                            </div>
+                        </div>
+                        <div class="form-group row m-4 p-3">
+                            <label for="email" class="col-12 col-md-2 col-form-label h2">E-mail: </label>
+                            <div class="col-12 col-md-10">
+                                <input type="email" class="form-control" id="correo" 
+                                placeholder="correo@ejemplo.com" name="correo">
+                            </div>
+                        </div>
+                        <div class="form-group table m-4 p-3 w-auto" id="carrito">
+                            <table class="table" id="listaCompra">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Imagen</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Precio</th>
+                                        <th scope="col">Cantidad</th>
+                                        <th scope="col">Subtotal</th>
+                                    </tr>
+                                </thead>
+                                
+                                <tbody>
+                                    
+                                </tbody>
+
+                                <tr>
+                                    <th colspan="4" scope="col" class="text-right">Total
+                                        <p id="totalProceso"></p>
+                                    </th>
+                                </tr>
+                            </table>
+
+                            <div class="row justify-content-center d-none" id="spinner">
+                                <div class="sk-circle">
+                                    <div class="sk-circle1 sk-child"></div>
+                                    <div class="sk-circle2 sk-child"></div>
+                                    <div class="sk-circle3 sk-child"></div>
+                                    <div class="sk-circle4 sk-child"></div>
+                                    <div class="sk-circle5 sk-child"></div>
+                                    <div class="sk-circle6 sk-child"></div>
+                                    <div class="sk-circle7 sk-child"></div>
+                                    <div class="sk-circle8 sk-child"></div>
+                                    <div class="sk-circle9 sk-child"></div>
+                                    <div class="sk-circle10 sk-child"></div>
+                                    <div class="sk-circle11 sk-child"></div>
+                                    <div class="sk-circle12 sk-child"></div>
+                                  </div>
+                            </div>
+
+                            <div class="container-fluid row d-flex justify-content-center m-4 p-3">
+                                <div class="col-6 d-flex justify-content-center">
+                                    <a href="index.html" class="btn btn-success">Seguir comprando</a>
+                                </div>
+                                <div class="col-6 d-flex justify-content-center">
+                                    <input type="submit" class="btn btn-primary " id="button" value="Finalizar compra">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="app.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

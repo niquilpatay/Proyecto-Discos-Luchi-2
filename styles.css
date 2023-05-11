@@ -1,0 +1,112 @@
+a{
+    cursor: pointer;
+    text-decoration: none;
+}
+
+body{
+    background-color: #0a6b27;
+    overflow-x: hidden;
+}
+
+.form-carrito, th, h2, td{
+    color: #FFF;
+    font-weight: 700;
+}
+
+.navbar{
+    background-color: #044217;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    width: 100%;
+}
+
+.text-primary{
+    font-weight: 700;
+    margin: 10px;
+}
+
+.card{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.modal-content{
+    background-color: #E3D8D6;
+}
+
+.modal-contenedor{
+    border:2px solid rgba(163, 163, 163, 0.13);
+    padding: 20px;
+    margin: 10px;
+}
+
+.modal-footer{
+    display: flex;
+    justify-content: space-around;
+}
+
+.modal-contenedor-info{
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-body{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: none;
+}
+
+.parrafo{
+    font-weight: 900;
+    font-style: italic;
+}
+
+.boton{
+    opacity: 0;
+}
+
+.btn-agregarCarrito{
+    background-color: #044217;
+    border-color: #044217;
+}
+
+.imagen{
+    max-width: 100%;
+}
+
+.img-carrito{
+    width: auto;
+    padding: 20px;
+}
+
+.img-compra{
+    width: 200px;
+    margin: 10px;
+}
+
+.alerta{
+    font-weight: 700;
+}
+
+@media (max-width: 320px) {
+    .container-fluid.row {
+      flex-direction: column;
+    }
+}
+
+#precioTotal{
+    margin: 0;
+    padding: 0;
+}
+
+#contenedor{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 50px;
+}
+
