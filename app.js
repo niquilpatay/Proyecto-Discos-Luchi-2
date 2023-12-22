@@ -105,37 +105,33 @@ const formulario = document.querySelector("#pagoProcesar");
 document.addEventListener("DOMContentLoaded", () => {
     carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     mostrarCarrito();
-    
-    if(document.querySelector("#activarFuncion")){
+
+    if (document.querySelector("#activarFuncion")) {
         document.querySelector("#activarFuncion").click(procesarPedido);
     }
 })
 
 //ESPERAR SUBMIT DE FORMULARIO
-if(formulario){
+if (formulario) {
     formulario.addEventListener("submit", enviarPedido);
 }
 
 //ALMACENAR INFO Y ENVÍO DE FORMULARIO
-function enviarPedido(e){
+function enviarPedido(e) {
     e.preventDefault();
     const cliente = document.querySelector("#cliente").value;
     const correo = document.querySelector("#correo").value;
     console.log(cliente, correo);
 
-    if(correo === "" || cliente === "") {
+    if (correo === "" || cliente === "") {
         Swal.fire({
             title: "Formulario incompleto.",
             text: "Rellenar formulario con e-mail y nombre.",
             icon: "error",
             confirmButtonText: "Aceptar"
         });
-    } else{
+    } else {
         const btn = document.getElementById('button');
-
-        /*document.getElementById('form')
-        .addEventListener('submit', function(event) {
-        event.preventDefault();*/
 
         btn.value = 'Sending...';
 
@@ -144,18 +140,18 @@ function enviarPedido(e){
 
         emailjs.sendForm(serviceID, templateID, this)
             .then(() => {
-            btn.value = 'Send Email';
-            alert('Sent!');
+                btn.value = 'Send Email';
+                alert('Sent!');
             }, (err) => {
-            btn.value = 'Send Email';
-            alert(JSON.stringify(err));
+                btn.value = 'Send Email';
+                alert(JSON.stringify(err));
             });
 
         const spinner = document.querySelector("#spinner");
         spinner.classList.add("d-flex");
         spinner.classList.remove("d-none");
 
-        setTimeout( () => {
+        setTimeout(() => {
             spinner.classList.remove("d-flex");
             spinner.classList.add("d-none");
             formulario.reset();
@@ -166,7 +162,7 @@ function enviarPedido(e){
         alertExito.textContent = "Compra realizada correctamente.";
         formulario.appendChild(alertExito);
 
-        setTimeout( () => {
+        setTimeout(() => {
             alertExito.remove();
         }, 3000);
 
@@ -175,7 +171,7 @@ function enviarPedido(e){
 }
 
 //VACIAR CARRO
-if(vaciarCarrito){
+if (vaciarCarrito) {
     vaciarCarrito.addEventListener("click", () => {
         carrito.length = [];
         mostrarCarrito();
@@ -183,16 +179,16 @@ if(vaciarCarrito){
 }
 
 //IR A PÁGINA DE COMPRA
-if(procesarCompra){
+if (procesarCompra) {
     procesarCompra.addEventListener("click", () => {
-        if(carrito.length == 0){
+        if (carrito.length == 0) {
             Swal.fire({
                 title: "Carro vacío.",
                 text: "Agregar elementos al carrito para continuar con la compra.",
                 icon: "error",
                 confirmButtonText: "Aceptar"
             });
-        } else{
+        } else {
             location.href = "compra.html";
         }
         procesarPedido();
@@ -200,10 +196,10 @@ if(procesarCompra){
 }
 
 //MOSTRAR PRODUCTOS DE PEDIDO
-function procesarPedido(){
+function procesarPedido() {
     carrito.forEach((producto) => {
         const listaCompra = document.querySelector("#listaCompra tbody");
-        const {id, nombre, cantidad, precio, img} = producto; 
+        const { id, nombre, cantidad, precio, img } = producto;
 
         const row = document.createElement("tr");
         row.innerHTML += `
@@ -222,9 +218,9 @@ function procesarPedido(){
 }
 
 //MOSTRAR STOCK DE PRODUCTOS
-if(contenedor){
+if (contenedor) {
     stockProductos.forEach((producto) => {
-        const {id, nombre, cantidad, desc, precio, img} = producto;
+        const { id, nombre, cantidad, desc, precio, img } = producto;
         contenedor.innerHTML += `
         <div class="card" id="toastrContainer" style="width: 18rem;">
         <img src="${img}" class="card-img-top" alt="...">
@@ -242,16 +238,16 @@ if(contenedor){
 //CARRITO VISUAL
 const mostrarCarrito = () => {
     const modalBody = document.querySelector(".modal .modal-body");
-    
-    if(modalBody){
 
-        modalBody.innerHTML="";
-        
+    if (modalBody) {
+
+        modalBody.innerHTML = "";
+
         const productosMostrados = [];
-    
+
         carrito.forEach((producto) => {
-            if (!productosMostrados.includes(producto.id)){
-                const {id, nombre, cantidad, precio, img} = producto;
+            if (!productosMostrados.includes(producto.id)) {
+                const { id, nombre, cantidad, precio, img } = producto;
                 modalBody.innerHTML += `
                 <div class="modal-contenedor">
                 <div>
@@ -270,30 +266,30 @@ const mostrarCarrito = () => {
         });
     }
 
-    if(carrito.length == 0){
+    if (carrito.length == 0) {
         modalBody.innerHTML = `
         <p class="text-center text-primary">Agregar elementos al carrito.</p>
         `
     }
 
     carritoContenedor.textContent = carrito.length;
-    
-    if(precioTotal){
+
+    if (precioTotal) {
         precioTotal.textContent = carrito.reduce((acc, producto) => acc + producto.cantidad * producto.precio, 0);
     }
     guardarStorage();
 }
 
 //AGREGAR PRODUCTO A CARRITO
-function agregarProducto(id){
+function agregarProducto(id) {
     const existe = carrito.some(producto => producto.id == id);
-    if(existe){
+    if (existe) {
         const producto = carrito.map(producto => {
-            if(producto.id == id){
+            if (producto.id == id) {
                 producto.cantidad++;
             }
         })
-    } else{
+    } else {
         const item = stockProductos.find((producto) => producto.id === id);
         carrito.push(item);
     }
@@ -302,14 +298,14 @@ function agregarProducto(id){
 }
 
 //ELIMINAR PRODUCTO DE CARRITO
-function eliminarProducto(id){
-    const juegoId = id; 
+function eliminarProducto(id) {
+    const juegoId = id;
     carrito = carrito.filter((juego) => juego.id !== juegoId);
     mostrarCarrito();
 }
 
 //GUARDAR CARRITO EN STORAGE
-function guardarStorage(){
+function guardarStorage() {
     localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
