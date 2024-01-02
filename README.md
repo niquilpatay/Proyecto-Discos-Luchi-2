@@ -1,7 +1,7 @@
 # Proyecto-Discos-Luchi
 Front-End de tienda de discos con carrito de compra que hace uso de localStorage:
 
-. LocalStorage (almacenar y recuperar información del carrito, permitiendo que la información persista entre sesiones del usuario)
+. localStorage (almacenar y recuperar información del carrito, permitiendo que la información persista entre sesiones del usuario)
 
 . Promesas (método sendForm de la librería emailjs que devuelve una promesa, y se maneja de forma asíncrona)
 
@@ -17,7 +17,7 @@ Front-End de tienda de discos con carrito de compra que hace uso de localStorage
 
 Front-End of a record store with a shopping cart that utilizes localStorage:
 
-. LocalStorage (store and retrieve cart information, allowing data persistence between user sessions)
+. localStorage (store and retrieve cart information, allowing data persistence between user sessions)
 
 . Promises (sendForm method from the emailjs library, returning a promise and handling it asynchronously)
 
